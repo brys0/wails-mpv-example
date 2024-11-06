@@ -22,10 +22,15 @@ func NewApp() *App {
 // so we can call the runtime methods
 func (a *App) startup(ctx context.Context) {
 	a.ctx = ctx
+	startProcessMPV() // This works
 }
 
-// Greet returns a greeting for the given name
+// Start process from js
 func (a *App) StartMPV() {
+	startProcessMPV() // This doesn't
+}
+
+func startProcessMPV() {
 	m := mpv.New()
 	defer m.TerminateDestroy()
 
